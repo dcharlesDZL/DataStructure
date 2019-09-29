@@ -8,4 +8,21 @@ Status InitList(List *L)
     (*L).currentlength = 0;
     return OK;
 }
+Status DestroyList(List *L)
+{
+    free((*L).element);
+    (*L).currentlength = 0;
+    (*L).listlength = 0;
+}
+Status ClearList(List *L)
+{
+    (*L).currentlength = 0;
+}
+int main()
+{
+    int a[10] = {1,2,3,4,5,6,7,8,9,10};
+    List *m;
+    InitList(m);
+    return 0;
+}
 
