@@ -7,15 +7,15 @@
 
 #ifndef LISTTYPE
 #define LISTTYPE
-typedef int ListType;
+//typedef int ListType;
 typedef int Element;
 #endif
 //typedef int Data;
 typedef struct 
 {
-    ListType *element;
-    int length;
-    int listlen;
+    Element *element;
+    int currentlength;
+    int listlength;
 }List;
 
 //初始化列表
