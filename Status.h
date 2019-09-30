@@ -9,6 +9,7 @@
 #define INFEASIBLE -1
 #define OVERFLOW -2
 #define INIT_LIST_LENGTH 100
+#define LIST_INCREASEMENT 20
 
 typedef int Status;
 typedef int Bool;

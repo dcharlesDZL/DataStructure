@@ -108,14 +108,53 @@ Status NextElem(List L, Element cur_e, Element *next_e)
 }
 Status ListInsert(List *L, int i, Element e)
 {
+    Element *newbase;
+    Element *p, *q;
     //首先判断i值是否合法
-
+    if (i<1 || i>(*L).currentlength)
+    {
+        printf("input i is illegal!");
+        return ERROR;
+    }
     //判断存储空间是否已满，若空间已满，则开辟新的空间
-
+    if ((*L).currentlength >= (*L).listlength)
+    {
+        newbase = (Element*) realloc((*L).element, ((*L).currentlength+LIST_INCREASEMENT)*sizeof(Element));
+        if(!newbase) exit(ERROR);
+        (*L).element = newbase;
+        (*L).listlength += LIST_INCREASEMENT;
+    }
     //定义插入位置，并将Element e插入
-
+    q = &(*L).element[i-1];
+    for(p=&(*L).element[(*L).currentlength-1];p>=q;--p)
+        *(p+1) = *(p);
+    *q = e;
+    (*L).currentlength += 1;
+    return OK;
 }
 
+Status ListDelete(List *L, int i, Element *e)
+{
+    Element *p, *q;
+    //判断i值是否合法
+    if(i<0 || i>(*L).currentlength-1)
+    return ERROR;
+    else
+    {
+        p = &(*L).element[i-1];
+        *e = *p;
+        q = (*L).element + (*L).currentlength - 1;
+        for (p=&(*L).element[i];p<=q;p++)
+        *(p-1) = *p; 
+        (*L).currentlength--;
+        return OK;       
+    }
+    
+}
+Status ListTraverse()
+{
+
+}
 
 
 
