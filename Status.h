@@ -1,7 +1,7 @@
 #ifndef STATUS_H
 #define STATUS_H
 //Bool
-#define TRUTE 1
+#define TRUE 1
 #define FALSE 0
 //Status
 #define OK 1

@@ -31,7 +31,7 @@ int ListLength(List L);
 //获取元素
 int GetElem(List L, int i, Element *e);
 //返回第一个与e满足compare关系的元素
-Element LocateElem(List L, Element e,Status (*compare)(Element, Element));
+Element LocateElem(List L, Element e,Status (compare)(Element, Element));
 //返回前驱元素
 Element PriorElem(List L, Element cur_e, Element *pre_e);
 //返回后继元素
