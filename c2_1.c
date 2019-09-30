@@ -1,3 +1,5 @@
+#ifndef C2_1_C
+#define C2_1_C
 #include "c2_1.h"
 //初始化列表
 Status InitList(List *L)
@@ -111,8 +113,14 @@ Status ListInsert(List *L, int i, Element e)
     //判断存储空间是否已满，若空间已满，则开辟新的空间
 
     //定义插入位置，并将Element e插入
-    
+
 }
+
+
+
+
+#endif
+
 int main()
 {
     List m;
