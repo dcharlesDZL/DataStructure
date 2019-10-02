@@ -138,22 +138,33 @@ Status ListDelete(List *L, int i, Element *e)
     Element *p, *q;
     //判断i值是否合法
     if(i<0 || i>(*L).currentlength-1)
-    return ERROR;
+        return ERROR;
     else
     {
         p = &(*L).element[i-1];
         *e = *p;
         q = (*L).element + (*L).currentlength - 1;
         for (p=&(*L).element[i];p<=q;p++)
-        *(p-1) = *p; 
+        *(p-1) = *p;
         (*L).currentlength--;
         return OK;       
     }
     
 }
-Status ListTraverse()
+Status ListTraverse(List L, Status visit(Element))
 {
-
+    int i = 0;
+    for (i; i<L.currentlength; i++)
+    {
+        if(visit(L.element[i]))
+        {
+        }
+        else
+        {
+            return ERROR;
+        }
+    }
+    return OK;
 }
 
 
