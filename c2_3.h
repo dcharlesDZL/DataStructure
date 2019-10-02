@@ -3,15 +3,18 @@
 #include <stdio.h>
 #include "Status.h"
 typedef int Element;
+//单向链表
 typedef struct LNode
 {
     Element data;
     struct LNode *next;  //LNode 前必须加struct关键字
 }ListNode,*LinkList;
 Status GetLinklistElem(LinkList L, Element *e, int i);
-Status InsertLinklistElem(LinkList *L, int i, Element e);
-Status DeleteLinklistElem(LinkList *L, int i, Element *e);
+Status LinklistInsert(LinkList *L, int i, Element e);
+Status LinklistDelete(LinkList *L, int i, Element *e);
 Status CreateLinklist(LinkList *L, int n);
+Status MergeLinklist(LinkList *La, LinkList *Lb, LinkList *Lc);
+//静态单链表
 
 #endif //C2_3_H
 
