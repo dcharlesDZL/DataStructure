@@ -2,6 +2,7 @@
     "files.associations": {
         "status.h": "c",
         "c2_1.h": "c",
-        "c2_3.h": "c"
+        "c2_3.h": "c",
+        "list": "cpp"
     }
 }
