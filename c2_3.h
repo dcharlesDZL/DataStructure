@@ -10,11 +10,6 @@ typedef struct LNode
     Element data;
     struct LNode *next;  //LNode 前必须加struct关键字
 }ListNode,*LinkList;
-// Status GetLinklistElem(LinkList L, Element *e, int i);
-// Status LinklistInsert(LinkList *L, int i, Element e);
-// Status LinklistDelete(LinkList *L, int i, Element *e);
-// Status CreateLinklist(LinkList *L, int n);
-// Status MergeLinklist(LinkList *La, LinkList *Lb, LinkList *Lc);
 //初始化链表
 void InitList(LinkList *L)
 {
@@ -86,19 +81,57 @@ int LocateElem(LinkList L, Element e, Status(*compare)(Element, Element))
     return 0;
 }
 //下一个元素
-Status NextElem()
+Status NextElem(LinkList L, Element cur_e, Element *next_e)
 {
-
+    LinkList p = L->next;
+    while(p)
+    {
+        if(cur_e == p->data)
+        {
+            next_e = p->next->data;
+            return OK;
+        };
+        p = p->next;
+    }
+    return ERROR;
 }
 //前一个元素
-Status PriorElem()
+Status PriorElem(LinkList L, Element cur_e, Element *prior_e)
 {
-
+    //p为游标，q暂存前一个元素 
+    LinkList p = L->next, q = L;
+    while(p)
+    {
+        if(cur_e == p->data)
+        {
+            prior_e = q->data;
+            return OK;
+        }        
+        q = p;
+        p = p->next;
+    }
+    return ERROR;
 }
 //链表插入元素
-Status ListInsesrt()
+Status ListInsesrt(LinkList L, int i, Element e)
 {
-
+    
+    int j = 0;
+    LinkList I, p = L;
+    while (p && j<i-1)
+    {
+        j++;
+        p = p->next;
+        if(j<1 || !p)
+        {
+            return ERROR;
+        }
+        I = (LinkList)malloc(sizeof(ListNode));
+        I->data = e;
+        I->next = p->next;
+        p->next = I;
+        return OK;
+    }
 }
 //链表删除元素
 Status ListDelete()
