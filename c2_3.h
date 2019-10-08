@@ -81,9 +81,36 @@ int LocateElem(LinkList L, Element e, Status(*compare)(Element, Element))
     {
         if(compare(e, L->data)) return i;
         i++;
+        L = L->next;
     }
-    return ERROR;    
+    return 0;
 }
+//下一个元素
+Status NextElem()
+{
+
+}
+//前一个元素
+Status PriorElem()
+{
+
+}
+//链表插入元素
+Status ListInsesrt()
+{
+
+}
+//链表删除元素
+Status ListDelete()
+{
+
+}
+//对每一个元素调用visit函数
+Status ListTraverse(LinkList L, void(*visit)(Element))
+{
+
+}
+
 //静态单链表
 // typedef struct 
 // {
