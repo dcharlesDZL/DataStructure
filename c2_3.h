@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include "Status.h"
 typedef int Element;
-#define MAXSIZE 1000
 //单向链表
 typedef struct LNode
 {
@@ -134,23 +133,34 @@ Status ListInsesrt(LinkList L, int i, Element e)
     }
 }
 //链表删除元素
-Status ListDelete()
+Status ListDelete(LinkList L, int i, Element *e)
 {
-
+    LinkList q = NULL, p = L;
+    int j = 1;
+    if(p && i>1)
+    {
+        while(j<i && p)
+        {
+            q->next = p->next;
+            j++;
+            p = p->next;
+        }
+        e = q->data;
+        free(p);
+        return OK;        
+    }
+    return ERROR;
 }
 //对每一个元素调用visit函数
-Status ListTraverse(LinkList L, void(*visit)(Element))
+void ListTraverse(LinkList L, void(*visit)(Element))
 {
-
+    LinkList p = L;
+    while (p)
+    {
+        visit(p->data);
+        p = p->next;
+    }    
 }
-
-//静态单链表
-// typedef struct 
-// {
-//     Element data;
-//     int cur;
-// }component, StaticLinklist[MAXSIZE];
-
 
 #endif //C2_3_H
 
@@ -161,6 +171,3 @@ name1 为结构体类型名称 等价于 struct name1，name2为name1别名。
 struct name3{}name4;
 name3 为结构体名，name4为结构体变量名，当未使用typedef 关键字定义struct时，创建结构体变量前面必须有struct 关键字。
 */
-
-
-
