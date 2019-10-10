@@ -16,10 +16,12 @@ typedef struct DLNode
 
 //初始化双向链表
 void InitDoubleLinkList(DoubleLinkList *L);
+//双向链表长度
+int DoubleLinkListLength(DoubleLinkList *L);
 //向链表插入元素
-void DoubleLinkListInsert(DoubleLinkList L, int i, Element e);
+Status DoubleLinkListInsert(DoubleLinkList L, int i, Element e);
 //对链表删除元素
-void DoubleLinkListDelete(DoubleLinkList L, int i, Element *e);
+Status DoubleLinkListDelete(DoubleLinkList L, int i, Element *e);
 //清空链表
 void ClearDoubleLinkList(DoubleLinkList L);
 //销毁链表
