@@ -25,12 +25,12 @@ int DoubleLinkListLength(DoubleLinkList *L)
     }
     return i;
 }
-//双向链表因其包含前后两个结点，所以插入操作要对四个指向进行重新定义。
+//双向链表因其包含前后两个结点，所以插入操作要对四个指向进行赋值。
 Status DoubleLinkListInsert(DoubleLinkList L, int i, Element e)
 {
     DoubleLinkList p = L, I;
     int j = 1;
-    if(p && i<DoubleLinkListLength(&L))
+    if((i>1) && i<DoubleLinkListLength(&L))
     {
         while (p && j<i)
         {
@@ -51,13 +51,17 @@ Status DoubleLinkListDelete(DoubleLinkList L, int i, Element *e)
 {
     DoubleLinkList p = L;
     int j = 1;
-    if(p && i<DoubleLinkListLength(&L))
+    if((i>1) && (i<DoubleLinkListLength(&L)))
     {
         while (p && j<i)
         {
             p = p->next;
             j++;
         }
-
+        e = p->data;
+        p->prior = p->next;
+        p->next->prior = p->prior;
+        return OK;
     }
+    return ERROR;
 }
