@@ -1,19 +1,19 @@
 #include <stdio.h>
+#include "Status.h"
 typedef int heaptype;
-#define HEAPMAXSIZE 100;
-typedef struct MaxHeap
+struct Heap
 {
-    heaptype* heap;
+    heaptype* num;
     int heapsize;
     int Maxsize;
 };
 /*********************/
 //初始化堆
-void InitHeap(MaxHeap* heap, int maxsize);
+void InitHeap(struct Heap* heap, int maxsize);
 //清除堆
-void ClearHeap(MaxHeap* heap);
+void ClearHeap(struct Heap* heap);
 //检查堆是否为空
-void isEmptyHeap(MaxHeap* heap);
+Bool isEmptyHeap(struct Heap* heap);
 //向堆插入元素
-void InsertHeap(MaxHeap* heap, heaptype x);
+void InsertHeap(struct Heap* heap, heaptype x);
 

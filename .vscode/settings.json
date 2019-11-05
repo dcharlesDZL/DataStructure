@@ -3,6 +3,9 @@
         "status.h": "c",
         "c2_1.h": "c",
         "c2_3.h": "c",
-        "list": "cpp"
+        "list": "cpp",
+        "c4_2.h": "c",
+        "heapapi.h": "c",
+        "stdlib.h": "c"
     }
 }
