@@ -1,6 +1,10 @@
+/* 
+定义了二维数组结构体，
+利用线性空间实现二维数组。
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
 #include "Status.h"
 
 typedef int ArrayElem;
@@ -14,10 +18,6 @@ typedef struct _Array
     ArrayElem *arr;
 } Array;
 
-/*=====*/
-ArrayElem a[10] = {1, 2, 3, 4, 5, 6, 23, 1};
-// Array2 aa[2][10];
-/*=====*/
 //基本操作
 //初始化数组
 Array InitArray(Dimension n, ArrayLen m)
@@ -27,27 +27,28 @@ Array InitArray(Dimension n, ArrayLen m)
     {
         exit(ERROR);
     }
-    ArrayElem *arr = (ArrayElem *)calloc(n * m, sizeof(ArrayElem));
-    if (!arr)
+    Arr.arr = (ArrayElem *)calloc(n * m, sizeof(ArrayElem));
+    if (!Arr.arr)
     {
         exit(OVERFLOW);
     }
-    Arr.arr = *arr;
     Arr.x = n;
     Arr.y = m;
     return Arr;
 }
 //销毁数组
-Status DestroyArray(ArrayElem *arr)
+Status DestroyArray(Array *arr)
 {
-    free(arr);
-    if (!arr)
+    free(arr->arr);
+    arr->x = 0;
+    arr->y = 0;
+    if (!arr->arr)
     {
-        return OK;
+        printf("ok");
     }
 }
 //取值
-ArrayElem Value(Array arr, Dimension m, ArrayLen n, ArrayElem e)
+ArrayElem Value(Array arr, Dimension m, ArrayLen n)
 {
     if (!arr.arr || arr.x == 0 || arr.y == 0)
     {
@@ -56,6 +57,7 @@ ArrayElem Value(Array arr, Dimension m, ArrayLen n, ArrayElem e)
     }
     if (m >= arr.x || n >= arr.y)
     {
+        printf("over dimension!");
         exit(ERROR);
     }
     ArrayElem *temp = arr.arr;
@@ -70,14 +72,52 @@ ArrayElem Value(Array arr, Dimension m, ArrayLen n, ArrayElem e)
     {
         temp += 1;
     }
-    e = *temp;
+    ArrayElem e = *temp;
+    return e;
 }
 //赋值
-void Assign();
-
+Status Assign(Array arr, Dimension m, ArrayLen n, ArrayElem e)
+{
+    if (!arr.arr || arr.x == 0 || arr.y == 0)
+    {
+        printf("Array is ERROR");
+        exit(ERROR);
+    }
+    if (m >= arr.x || n >= arr.y)
+    {
+        printf("over dimension!");
+        exit(ERROR);
+    }
+    ArrayElem *temp = arr.arr;
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < arr.y; j++)
+        {
+            temp += 1;
+        }
+    }
+    for (int i = 0; i < n + 1; i++)
+    {
+        temp += 1;
+    }
+    *temp = e;
+    return OK;
+}
+//测试
 int main()
 {
-    // printf("%d", aa[1][8]);
-    InitArray(3, 2);
-    return 0;
+    Array test;
+    test = InitArray(3, 2);
+    if (!test.arr)
+    {
+        printf("asdf");
+    }
+    printf("%d, %d\n", test.x, test.y);
+    ArrayElem a;
+    a = Value(test, 0, 1);
+    printf("%d\n", a);
+    Assign(test, 0, 0, 12);
+    a = Value(test, 0, 0);
+    printf("%d\n", a);
+    DestroyArray(&test);
 }
