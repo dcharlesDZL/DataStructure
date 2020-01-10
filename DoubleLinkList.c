@@ -1,15 +1,15 @@
 /*
 该文件为双向链表的操作实现
 */
-#include "c2_5.h"
+#include "DoubleLinkList.h"
 void InitDoubleLinkList(DoubleLinkList *L)
 {
     L = (DoubleLinkList)malloc(sizeof(DoubleLinkListNode));
-    if(L)
+    if (L)
     {
         (*L)->next = (*L)->prior = L;
     }
-    else 
+    else
     {
         exit(OVERFLOW);
     }
@@ -18,7 +18,7 @@ int DoubleLinkListLength(DoubleLinkList *L)
 {
     int i = 0;
     DoubleLinkList p = L;
-    while(p)
+    while (p)
     {
         i++;
         p = p->next;
@@ -30,9 +30,9 @@ Status DoubleLinkListInsert(DoubleLinkList L, int i, Element e)
 {
     DoubleLinkList p = L, I;
     int j = 1;
-    if((i>1) && i<DoubleLinkListLength(&L))
+    if ((i > 1) && i < DoubleLinkListLength(&L))
     {
-        while (p && j<i)
+        while (p && j < i)
         {
             p = p->next;
             j++;
@@ -51,9 +51,9 @@ Status DoubleLinkListDelete(DoubleLinkList L, int i, Element *e)
 {
     DoubleLinkList p = L;
     int j = 1;
-    if((i>1) && (i<DoubleLinkListLength(&L)))
+    if ((i > 1) && (i < DoubleLinkListLength(&L)))
     {
-        while (p && j<i)
+        while (p && j < i)
         {
             p = p->next;
             j++;

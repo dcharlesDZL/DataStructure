@@ -4,15 +4,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "Status.h"
-// #ifdef ELEMENTTYPE
-// typedef int Element
-// #endif
-#ifndef C2_6_H
-#define C2_6_H
 #define STACK_INIT_SIZE 50
 #define STACK_INCEAMENT 2
-// #define Elmen int
-// Elmen abf;
 typedef int StackElement;
 typedef struct _Stack
 {
@@ -62,11 +55,7 @@ StackElement Pop(Stack *s) //必须用指针接收数据，否则内部作用域
     e = *(--s->top);
     return e;
 }
-int StackLen(Stack *s)
-{
-    if (s->top == s->base)
-        return 0;
-}
+// 获取栈顶元素
 StackElement GetTop(Stack *s) // top总为待接收新的压栈元素状态。
 {
     if (s->top == s->base)
@@ -78,7 +67,6 @@ StackElement GetTop(Stack *s) // top总为待接收新的压栈元素状态。
     e = *(s->top - 1);
     return e;
 }
-#endif
 
 int main()
 {
