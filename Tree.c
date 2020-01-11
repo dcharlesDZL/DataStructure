@@ -85,10 +85,10 @@ int main()
     TreeNode a = {11, NULL, NULL};
     TreeNode b = {22, NULL, NULL};
     TreeNode c = {33, NULL, NULL};
-    Tree *test;
+    Tree test;
     test = InitTree();
     Status i;
-    i = AddNode(test, a, (*test)->parent);
+    i = AddNode(test, a, (*test).parent);
     printf("%d\n", TreeEmpty(test));
     TreeNode *temp;
     temp = &test;

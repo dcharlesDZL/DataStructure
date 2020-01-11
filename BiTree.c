@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "Status.h"
-
+#include "Stack.h"
 typedef int TreeElem;
 typedef struct _BiTreeNode
 {
@@ -58,5 +58,14 @@ int BiTreeDepth(BiTree T)
 //非递归法求界二叉树深度
 int BiTreeDepth2(BiTree T)
 {
-    // BiTreeNode a[];
+    BiTreeNode * temp;
+    temp = T;
+    int depth = 0;
+    if(!temp){
+        return depth;
+    }
+    while(temp->rchild){
+        depth++;
+
+    }
 }
