@@ -2,6 +2,7 @@
 #include "Status.h"
 #include "Stack.h"
 typedef int TreeElem;
+typedef BiTreeNode StackElement;
 typedef struct _BiTreeNode
 {
     TreeElem val;
@@ -61,11 +62,16 @@ int BiTreeDepth2(BiTree T)
     BiTreeNode * temp;
     temp = T;
     int depth = 0;
+    Stack *s;
+    InitStack(s);
     if(!temp){
         return depth;
     }
     while(temp->rchild){
         depth++;
-
+        Push(s, temp->rchild);
+        while(temp->lchild){
+            
+        }
     }
 }

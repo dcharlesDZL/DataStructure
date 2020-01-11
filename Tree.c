@@ -88,7 +88,7 @@ int main()
     Tree test;
     test = InitTree();
     Status i;
-    i = AddNode(test, a, (*test).parent);
+    i = AddNode(test, a, test->parent);
     printf("%d\n", TreeEmpty(test));
     TreeNode *temp;
     temp = &test;
